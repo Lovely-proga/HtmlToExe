@@ -1,0 +1,33 @@
+name: Build Executable
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Чтение репозитория
+        uses: actions/checkout@v4
+
+      - name: Установка Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Установка зависимостей
+        run: npm ci
+
+      - name: Сборка .exe файла
+        run: npm run build
+
+      - name: Сохранение готового .exe
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-exe
+          path: dist/*.exe
