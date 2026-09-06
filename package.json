@@ -1,0 +1,22 @@
+{
+  "name": "my-html-app",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.0"
+  },
+  "build": {
+    "appId": "com.example.myapp",
+    "files": [
+      "index.html",
+      "main.js"
+    ],
+    "win": {
+      "target": "portable"
+    }
+  }
+}
